@@ -9,7 +9,8 @@
   <%- include('components/navbar') %>
   <h1>Browse our products by category</h1>
   <h2>Guitars</h2>
-  <h2>Cajons</h2>
-  
+  <% guitars.forEach((guitar) => { %>
+    <h3><%= guitar.name %></h3>
+  <% }); %>
 </body>
-</html>
+</html> 
