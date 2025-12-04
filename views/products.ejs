@@ -10,7 +10,7 @@
   <h1>Browse our products by category</h1>
   <h2>Guitars</h2>
   <% guitars.forEach((guitar) => { %>
-    <h3><%= guitar.name %></h3>
+    <%- include('components/productCard', { product: guitar }) %>
   <% }); %>
 </body>
 </html> 
