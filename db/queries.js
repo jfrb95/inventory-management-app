@@ -23,9 +23,14 @@ exports.getProductById = async function(id) {
   }
 
   return rows[0] || null;
-}
+};
 
-exports.getAllSuppliers = async function() {
+exports.getAllSuppliers = async function(table) {
   const { rows } = await pool.query("SELECT * FROM suppliers");
   return rows;
-}
+};
+
+exports.getAllCustomers = async function() {
+  const { rows } = await pool.query("SELECT * FROM customers");
+  return rows;
+};
