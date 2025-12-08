@@ -1,0 +1,7 @@
+<div class="products-list">
+  <% products.forEach((product)=> { %>
+    <% if (product.category === targetCategory ) { %>
+      <%- include('productCard', { product: product }) %>
+    <% } %>
+  <% }); %>
+</div>

@@ -1,6 +1,11 @@
-<h1><%- product.name %></h1>
-<p>£<%- product.price %></p>
-<p>Quantity: <%- product.stock_quantity %></p>
-<p>supplier goes here</p>
+<h1><%= product.name %></h1>
+<p>£<%= product.price %></p>
+<p>Quantity: <%= product.stock_quantity %></p>
+<form action="/products/<%= product.product_id %>/quantity" method="POST">
+  <input type="number" name="set-quantity" id="set-quantity">
+  <button type="submit">Submit new quantity</button>
+</form>
 
-<%- contentFor('title') %> <%- product.name %>
+<p><%- product.supplier_name %></p>
+
+<%- contentFor('title') %> <%= product.name %>

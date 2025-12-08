@@ -1,9 +1,23 @@
-<h1>Browse our products by category</h1>
-<h2>Guitars</h2>
-<div class="products-list">
-  <% guitars.forEach((guitar) => { %>
-    <%- include('components/productCard', { product: guitar }) %>
-  <% }); %>
-</div>
+<h1>Products</h1>
 
-<%- contentFor('title') %> Products
+<% if (selectedSupplier) { %>
+  <div class="supplier-filter-notice">
+    <p>Showing products from supplier: <%= selectedSupplier %>
+    </p>
+    <a href="/products">Show all products</a>
+  </div>
+<% } %>
+
+<h2>Guitars</h2>
+<%- include('components/productCardList', { targetCategory: 'guitar', supplierFilter: selectedSupplier }) %>
+
+<h2>Cajons</h2>
+<%- include('components/productCardList', { targetCategory: 'cajon', supplierFilter: selectedSupplier }) %>
+
+<h2>Shoes</h2>
+<%- include('components/productCardList', { targetCategory: 'shoe', supplierFilter: selectedSupplier }) %>
+
+<h2>Traje de Flamenca</h2>
+<%- include('components/productCardList', { targetCategory: 'traje-de-flamenca', supplierFilter: selectedSupplier }) %>
+
+<%- contentFor('title') %> Products'

@@ -8,5 +8,7 @@ productsRouter.route("/")
 
 productsRouter.get("/:productId", productsController.productGET);
 
+productsRouter.post("/:productId/quantity", productsController.productQuantityPOST)
+
 
 module.exports = productsRouter;

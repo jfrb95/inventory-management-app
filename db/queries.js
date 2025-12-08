@@ -1,5 +1,10 @@
 const pool = require("./pool");
 
+exports.getAllProducts = async function() {
+  const { rows } = await pool.query("SELECT * FROM products");
+  return rows;
+}
+
 exports.getProductsInCategory = async function(category) {
   if (typeof category !== "string") {
     throw new Error("category must be a string");
@@ -11,9 +16,21 @@ exports.getProductsInCategory = async function(category) {
   return rows;
 };
 
+exports.getProductsBySupplier = async function(supplierId) {
+  const { rows } = await pool.query("SELECT * FROM products WHERE supplier_id=$1", [supplierId]);
+  return rows;
+};
+
 exports.getProductById = async function(id) {
-  //make this left join with supplier so the page can get who the supplier is
-  const { rows } = await pool.query("SELECT * FROM products WHERE product_id=$1", [id]);
+  //left join with supplier so the page can get who the supplier is
+  const { rows } = await pool.query(
+    `
+    SELECT * 
+    FROM products 
+    LEFT JOIN suppliers
+    ON products.supplier_id = suppliers.supplier_id
+    WHERE product_id=$1
+    `, [id]);
 
   if (rows.length > 1) {
     throw new Error(`Found multiple products with id: ${id}`);
@@ -24,6 +41,10 @@ exports.getProductById = async function(id) {
 
   return rows[0] || null;
 };
+
+exports.productQuantityPOST = async function(id, quantity) {
+  await pool.query(`UPDATE products SET stock_quantity=$1 WHERE product_id=$2`, [quantity, id]);
+}
 
 exports.getAllSuppliers = async function(table) {
   const { rows } = await pool.query("SELECT * FROM suppliers");
