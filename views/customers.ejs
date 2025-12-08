@@ -2,12 +2,10 @@
 <ul class="customers-list">
   <% customers.forEach((customer)=> { %>
     <li class="customer-li">
-      <a href="">
-        <p><%- customer.customer_id %></p>
-        <p><%- customer.first_name %> <%- customer.last_name %></p>
-        <p><%- customer.email %></p>
-        <p><%- customer.phone %></p>
-      </a>
+      <p><%- customer.customer_id %></p>
+      <p><%- customer.first_name %> <%- customer.last_name %></p>
+      <a href=""><%- customer.email %></a>
+      <a href=""><%- customer.phone %></a>
     </li>
     <% }); %>
 </ul>
