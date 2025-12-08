@@ -1,1 +1,12 @@
-<p>Suppliers will be listed here.</p>
+<h1>Suppliers</h1>
+
+<ul class="suppliers-list">
+  <% suppliers.forEach((supplier) => { %>
+    <li class="supplier-li">
+      <a href="">
+        <p><%- supplier.supplier_id %></p>
+        <p><%- supplier.supplier_name %></p>
+      </a>
+    </li>
+  <% }); %>
+</ul>

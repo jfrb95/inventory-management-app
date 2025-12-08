@@ -1,7 +1,9 @@
 <h1>Browse our products by category</h1>
 <h2>Guitars</h2>
-<% guitars.forEach((guitar) => { %>
-  <%- include('components/productCard', { product: guitar }) %>
-<% }); %>
+<div class="products-list">
+  <% guitars.forEach((guitar) => { %>
+    <%- include('components/productCard', { product: guitar }) %>
+  <% }); %>
+</div>
 
 <%- contentFor('title') %> Products
