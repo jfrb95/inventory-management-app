@@ -55,3 +55,14 @@ exports.getAllCustomers = async function() {
   const { rows } = await pool.query("SELECT * FROM customers");
   return rows;
 };
+
+exports.editCustomer = async function(...args) {
+  
+  await pool.query(
+    `
+    UPDATE customers
+    SET first_name=$2, last_name=$3, email=$4, phone=$5
+    WHERE customer_id=$1
+    `
+  , [...args]);
+}
