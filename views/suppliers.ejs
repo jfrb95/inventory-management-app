@@ -3,10 +3,9 @@
 <ul class="suppliers-list">
   <% suppliers.forEach((supplier) => { %>
     <li class="supplier-li">
-      <a href="">
-        <p><%- supplier.supplier_id %></p>
-        <p><%- supplier.supplier_name %></p>
-      </a>
+      <p><%- supplier.supplier_id %></p>
+      <p><%- supplier.supplier_name %></p>
+      <a href="">See Supplier Products</a>
     </li>
   <% }); %>
 </ul>
