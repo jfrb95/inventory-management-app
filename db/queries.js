@@ -73,3 +73,11 @@ exports.editCustomer = async function (firstName, lastName, email, phone) {
     WHERE customer_id=$1
     `, [firstName, lastName, email, phone]);
 };
+
+exports.addNewProduct = async function(name, category, supplierId, price, stockQuantity) {
+  await pool.query(
+    `
+    INSERT INTO products
+    VALUES (DEFAULT, $1, $2, $3, $4, $5)
+    `, [name, category, supplierId, price, stockQuantity]);
+};

@@ -2,7 +2,7 @@
 <p>£<%= product.price %></p>
 <p>Quantity: <%= product.stock_quantity %></p>
 <form action="/products/<%= product.product_id %>/quantity" method="POST">
-  <input type="number" name="set-quantity" id="set-quantity">
+  <input type="number" name="set-quantity" id="set-quantity-<%= product.product_id %>">
   <button type="submit">Submit new quantity</button>
 </form>
 

@@ -8,6 +8,31 @@
   </div>
 <% } %>
 
+<button>New Product</button>
+<form action="/products/new" method="POST">
+  <label>
+    Name:
+    <input type="text" name="name" id="name-new">
+  </label>
+  <label>
+    Category:
+    <input type="text" name="category" id="category-new">
+  </label>
+  <label>
+    Supplier ID:
+    <input type="text" name="supplier-id" id="supplier-id-new">
+  </label>
+  <label>
+    Price:
+    <input type="text" name="price" id="price-new">
+  </label>
+  <label>
+    Stock Quantity:
+    <input type="text" name="stock-quantity" id="stock-quantity-new">
+  </label>
+  <button type="submit">Add New Product</button>
+</form>
+
 <h2>Guitars</h2>
 <%- include('components/productCardList', { targetCategory: 'guitar', supplierFilter: selectedSupplier }) %>
 

@@ -22,9 +22,13 @@ exports.productGET = async function(req, res) {
   res.render("product", { product: await db.getProductById(productId)});
 };
 
-exports.addProductPOST = async function(req, res) {
-  console.log(req.body);
-  res.redirect('back');
+exports.newProductPOST = async function(req, res) {
+
+  const [name, category, supplierId, price, stockQuantity] = Object.values(req.body);
+
+  await db.addNewProduct(name, category, supplierId, price, stockQuantity);
+
+  res.redirect('/products');
 };
 
 exports.productQuantityPOST = async function(req, res) {
