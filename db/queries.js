@@ -44,7 +44,7 @@ exports.getProductById = async function(id) {
 
 exports.productQuantityPOST = async function(id, quantity) {
   await pool.query(`UPDATE products SET stock_quantity=$1 WHERE product_id=$2`, [quantity, id]);
-}
+};
 
 exports.getAllSuppliers = async function(table) {
   const { rows } = await pool.query("SELECT * FROM suppliers");
@@ -56,13 +56,20 @@ exports.getAllCustomers = async function() {
   return rows;
 };
 
-exports.editCustomer = async function(...args) {
+exports.addCustomer = async function(firstName, lastName, email, phone) {
+  await pool.query(
+    `
+    INSERT INTO customers
+    VALUES (DEFAULT, $1, $2, $3, $4)
+    `, [firstName, lastName, email, phone]);
+};
+
+exports.editCustomer = async function (firstName, lastName, email, phone) {
   
   await pool.query(
     `
     UPDATE customers
     SET first_name=$2, last_name=$3, email=$4, phone=$5
     WHERE customer_id=$1
-    `
-  , [...args]);
-}
+    `, [firstName, lastName, email, phone]);
+};

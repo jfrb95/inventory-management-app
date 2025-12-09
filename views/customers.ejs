@@ -1,4 +1,24 @@
 <h1>Customers</h1>
+<button>New Customer</button>
+<form action="/customers/create" method="POST">
+  <label>
+    First Name:
+    <input type="text" name="first-name" id="first-name-create">
+  </label>
+  <label>
+    Last Name:
+    <input type="text" name="last-name" id="last-name-create">
+  </label>
+  <label>
+    Email:
+    <input type="text" name="email" id="email-create">
+  </label>
+  <label>
+    Phone:
+    <input type="text" name="phone" id="phone-create">
+  </label>
+  <button type="submit">Add New Customer</button>
+</form>
 <ul class="customers-list">
   <% customers.forEach((customer)=> { %>
     <li class="customer-li">
@@ -12,19 +32,19 @@
       <form action="/customers/<%= customer.customer_id %>/edit" method="POST">
         <label>
           First Name:
-          <input type="text" name="first-name" id="first-name" value="<%= customer.first_name %>">
+          <input type="text" name="first-name" id="first-name-<%= customer.customer_id %>" value="<%= customer.first_name %>">
         </label>
         <label>
           Last Name:
-          <input type="text" name="last-name" id="last-name" value="<%= customer.last_name %>">
+          <input type="text" name="last-name" id="last-name-<%= customer.customer_id %>" value="<%= customer.last_name %>">
         </label>
         <label>
           Email:
-          <input type="text" name="email" id="email" value="<%= customer.email %>">
+          <input type="text" name="email" id="email-<%= customer.customer_id %>" value="<%= customer.email %>">
         </label>
         <label>
           Phone:
-          <input type="text" name="phone" id="phone" value="<%= customer.phone %>">
+          <input type="text" name="phone" id="phone-<%= customer.customer_id %>" value="<%= customer.phone %>">
         </label>
         <button type="submit">Submit Changes</button>
       </form>
