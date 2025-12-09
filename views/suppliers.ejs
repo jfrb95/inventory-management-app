@@ -1,11 +1,18 @@
 <h1>Suppliers</h1>
 
+<form action="/suppliers/new" method="POST">
+  <label>
+    <input type="text" name="name" id="new-supplier-name">
+  </label>
+  <button type="submit">Add New Supplier</button>
+</form>
+
 <ul class="suppliers-list">
   <% suppliers.forEach((supplier) => { %>
     <li class="supplier-li">
-      <p><%- supplier.supplier_id %></p>
-      <p><%- supplier.supplier_name %></p>
-      <a href="suppliers/<%- supplier.supplier_id %>/products">See Supplier Products</a>
+      <p><%= supplier.supplier_id %></p>
+      <p><%= supplier.supplier_name %></p>
+      <a href="suppliers/<%= supplier.supplier_id %>/products">See Supplier Products</a>
     </li>
   <% }); %>
 </ul>

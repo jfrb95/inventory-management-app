@@ -2,20 +2,22 @@ const db = require("../db/queries");
 
 exports.productsPageGET = async function(req, res) {
 
-  console.log("req query", req.query);
-  const { supplier } = req.query;
+  const { supplierId } = req.query;
 
   let products;
-  if (supplier) {
-    products = await db.getProductsBySupplier(supplier);
+  let supplierName;
+  if (supplierId) {
+    products = await db.getProductsBySupplier(supplierId);
+    supplierName = await db.getSupplierName(supplierId);
   } else {
     products = await db.getAllProducts();
   }
 
   res.render("products", {
     products,
-    selectedSupplier: supplier
-  }); };
+    selectedSupplier: supplierName
+  }); 
+};
 
 exports.productGET = async function(req, res) {
   const { productId } = req.params;

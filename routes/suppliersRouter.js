@@ -4,6 +4,8 @@ const suppliersRouter = Router();
 
 suppliersRouter.get("/", suppliersController.suppliersPageGet);
 
+suppliersRouter.post("/new", suppliersController.newSupplierPOST);
+
 suppliersRouter.get("/:supplierId/products", suppliersController.productsBySupplierGET);
 
 module.exports = suppliersRouter;

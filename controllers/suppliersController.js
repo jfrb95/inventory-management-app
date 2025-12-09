@@ -6,5 +6,15 @@ exports.suppliersPageGet = async function (req, res) {
 
 exports.productsBySupplierGET = async function (req, res) {
   const { supplierId } = req.params;
-  res.redirect(`/products?supplier=${supplierId}`);
+  console.log('suppliersController supplierId:', supplierId);
+  res.redirect(`/products?supplierId=${supplierId}`);
+};
+
+exports.newSupplierPOST = async function(req, res) {
+
+  const supplierName = req.body.name;
+
+  await db.addNewSupplier(supplierName);
+
+  res.redirect("/suppliers");
 };

@@ -81,3 +81,23 @@ exports.addNewProduct = async function(name, category, supplierId, price, stockQ
     VALUES (DEFAULT, $1, $2, $3, $4, $5)
     `, [name, category, supplierId, price, stockQuantity]);
 };
+
+exports.addNewSupplier = async function(name) {
+  await pool.query(
+    `
+    INSERT INTO suppliers
+    VALUES (DEFAULT, $1)
+    `, [name]);
+};
+
+exports.getSupplierName = async function(id) {
+  const { rows } = await pool.query(
+    `
+    SELECT supplier_name 
+    FROM suppliers 
+    WHERE supplier_id=$1
+    `, [id]);
+  
+  console.log('queries supplier name:', rows[0]["supplier_name"]);
+  return rows[0]["supplier_name"];
+};
