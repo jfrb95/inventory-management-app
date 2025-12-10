@@ -1,11 +1,26 @@
 <h1><%= product.name %></h1>
 <p>£<%= product.price %></p>
 <p>Quantity: <%= product.stock_quantity %></p>
-<form action="/products/<%= product.product_id %>/quantity" method="POST">
-  <input type="number" name="set-quantity" id="set-quantity-<%= product.product_id %>">
+<p><%- product.supplier_name %></p>
+
+<form action="/products/<%= product.product_id %>/edit" method="POST">
+  <label>
+    Name
+    <input type="text" name="edit-name" id="edit-name-<%= product.product_id %>" value="<%= product.name %>">
+  </label>
+  <label>
+    Category
+    <input type="text" name="edit-category" id="edit-category-<%= product.product_id %>" value="<%= product.category %>">
+  </label>
+  <label>
+    Price
+    <input type="number" step="0.01" min="0" name="edit-price" id="edit-price-<%= product.product_id %>" value="<%= product.price %>">
+  </label>
+  <label>
+    Stock Quantity
+    <input type="number" name="edit-quantity" id="edit-quantity-<%= product.product_id %>" value="<%= product.stock_quantity %>">
+  </label>
   <button type="submit">Submit new quantity</button>
 </form>
-
-<p><%- product.supplier_name %></p>
 
 <%- contentFor('title') %> <%= product.name %>

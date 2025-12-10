@@ -42,7 +42,7 @@ exports.getProductById = async function(id) {
   return rows[0] || null;
 };
 
-exports.productQuantityPOST = async function(id, quantity) {
+exports.editProduct = async function(id, quantity) {
   await pool.query(`UPDATE products SET stock_quantity=$1 WHERE product_id=$2`, [quantity, id]);
 };
 

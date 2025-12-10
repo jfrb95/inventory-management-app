@@ -33,12 +33,12 @@ exports.newProductPOST = async function(req, res) {
   res.redirect('/products');
 };
 
-exports.productQuantityPOST = async function(req, res) {
+exports.editProductPOST = async function(req, res) {
 
   const productId = req.params.productId;
   const newQuantity = req.body["set-quantity"];
 
-  await db.productQuantityPOST(productId, newQuantity);
+  await db.editProduct(productId, newQuantity);
 
   res.redirect(`/products/${productId}`);
 };
