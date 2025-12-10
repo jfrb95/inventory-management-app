@@ -42,8 +42,13 @@ exports.getProductById = async function(id) {
   return rows[0] || null;
 };
 
-exports.editProduct = async function(id, quantity) {
-  await pool.query(`UPDATE products SET stock_quantity=$1 WHERE product_id=$2`, [quantity, id]);
+exports.editProduct = async function (id, name, category, price, stockQuantity) {
+  await pool.query(
+    `
+    UPDATE products
+    SET name=$2, category=$3, price=$4, stock_quantity=$5
+    WHERE product_id=$1
+    `, [id, name, category, price, stockQuantity]);
 };
 
 exports.getAllSuppliers = async function(table) {
